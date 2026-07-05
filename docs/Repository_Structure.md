@@ -6,9 +6,11 @@
 
 ## 全局版本迭代总览
 1. v0.0-BaseFrame：批次0 仓库基础骨架、协议、顶层文档、空目录预创建
-2. v0.1-CommonCore：批次1 Common-LSG通用底层内核完整开源，锁定LSG理论本体
+2. v0.1-CommonCore：批次1 Common-LSG通用底层内核完整实现，开源，锁定LSG理论本体 
 3. v0.2-Core4Industry：批次2 四大成熟核心行业落地模块（医疗CT/超声、山区无人机导航、水下潜航测绘）
 4. v0.3-Full12Industry：批次3 八大高价值工业场景补充模块，完成12大商用行业全覆盖，完整现有技术证据链成型
+
+
 
 ## 根目录一级文件夹&文件总览
 layered-section-geometry-lsg/
@@ -58,11 +60,16 @@ Common-LSG/、12大行业文件夹、2个小众拓展文件夹
 Common-LSG/
 ├─ README.md # 底层库数学说明、跨场景调用示例
 ├─ axiom_calc/ # LSG 几何公理计算库
-├─ slice_rebuild/ # 通用非正交切片重建内核
+├─ slice_rebuild/ # 通用非正交截面重建内核
 ├─ constraint_algo/ # 全局基础约束、平滑、畸变修正算子
+├─ core_gde_solver/ # 【新增 v0.1.1】GDE 全域对偶演化矩阵求解器
+│ ├─ gde_lsg_solver.py # LSG 多层截面 GDE 演化主求解器类
+│ ├─ operators.py # 三维拉普拉斯 / 梯度 / 层级耦合稀疏算子库
+│ ├─ test_gde_solver.py # 单元测试与守恒性验证脚本
+│ └─ README.md # 模块定位、理论溯源、调用接口文档
 └─ io_utils/ # 通用数据解析、STL/OBJ/ 点云三维导出工具
 批次完成动作：完整底层代码+配套数学文档提交，打上v0.1-CommonCore标签，底层内核公有领域存证锁定。
-
+> 【v0.1.1 增量更新】新增 core_gde_solver 模块，完成「本源公理→普适动力学方程→LSG矩阵形式→有限差分数值实现」全链条代码落地，统一全仓库底层几何计算口径，为所有行业模块提供标准化正演与重建底座。
 ---
 
 ### 批次2 v0.2-Core4Industry：四大成熟核心行业模块
